@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="assets/js/lib/jquery-3.3.1.min.js"></script> -->
     <title>Upload</title>
 </head>
 <body>
@@ -13,10 +15,22 @@
     id="uploadForm"
     action="http://localhost:3000/upload"
     method="POST"
-    encType="multipart/form-data"
-    onchange="alertFilesize();">
+    encType="multipart/form-data">
         <input type="file" name="sampleFile"/>
-        <input type="submit" value="upload!"/>
+        <input type="submit" value="Upload!"/>
     </form>
+
+    <script type="text/javascript">
+        $('#uploadForm').bind('change', function() {
+            let uploadFileName = this[0].files[0].name;
+            let uploadFileSize = this[0].files[0].size;
+            let uploadFileType = this[0].files[0].type;
+            let uploadFileModified = this[0].files[0].lastModifiedDate;
+            console.log(uploadFileName);
+            console.log(uploadFileSize);
+            console.log(uploadFileType);
+            console.log(uploadFileModified);
+        });
+    </script>
 </body>
 </html>
