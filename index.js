@@ -19,6 +19,7 @@ if (!fs.existsSync(dir)){
     fs.mkdirSync(dir);
 }
 
+// express-fileupload application.
 app.post('/upload', function (req, res) {
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
@@ -36,10 +37,12 @@ app.post('/upload', function (req, res) {
         let stats = fs.statSync(`./uploads/${sampleFile.name}`);
         let fileSizeInBytes = stats.size;
 
-        res.send(`${sampleFile.name} Uploaded!  ${fileSizeInBytes} Bytes`);
+        // res.send(`${sampleFile.name} Uploaded!  ${fileSizeInBytes} Bytes`);
+        res.sendFile(__dirname + '/public/index.html');
     });
 });
 
+// Starts the server.
 app.listen(PORT, () => {
     console.log('Listening on port:', PORT, 'use CTRL+C to close.');
 });

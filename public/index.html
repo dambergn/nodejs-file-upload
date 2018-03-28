@@ -14,7 +14,11 @@
     <h1>Upload</h1>
     <form ref="uploadForm" id="uploadForm" action="http://localhost:3000/upload" method="POST" encType="multipart/form-data">
         <input type="file" name="sampleFile" />
-        <input type="submit" value="Upload!" />
+        <br>
+        <input type="submit" value="Upload!" action="uploadComplete();"/>
+        <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
+        <h3 id="status"></h3>
+        <p id="loaded_n_total"></p>
     </form>
     <div>
         <ul id="fileInfo">
@@ -24,6 +28,7 @@
     <script type="text/javascript">
         fileSize = 0;
         fileSymb = '';
+        uploadProgress = 0;
         $('#uploadForm').bind('change', function () {
             // clear file info when new file is selected
             document.getElementById("fileInfo").innerHTML = "";
@@ -71,8 +76,16 @@
                 liEm.appendChild(info);
                 document.getElementById("fileInfo").appendChild(liEm);
             };
-        });
 
+            // document.getElementById("progressBar").value = "75";
+        });
+        function uploadComplete() {
+                document.getElementById("fileInfo").innerHTML = "";
+                let liEm = document.createElement("li");
+                let info = document.createTextNode("Upload Complete!");
+                liEm.appendChild(info);
+                document.getElementById("fileInfo").appendChild(liEm);
+            };
     </script>
 </body>
 
