@@ -38,7 +38,9 @@ app.post('/upload', function (req, res) {
         let fileSizeInBytes = stats.size;
 
         // res.send(`${sampleFile.name} Uploaded!  ${fileSizeInBytes} Bytes`);
+        
         res.sendFile(__dirname + '/public/index.html');
+        // res.send(uploadComplete());
     });
 });
 
