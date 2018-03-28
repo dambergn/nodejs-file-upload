@@ -33,20 +33,32 @@
             console.log(uploadFileSize);
             console.log(uploadFileType);
             console.log(uploadFileModified);
-            
+
+            function precisionRound(number, precision) {
+                var factor = Math.pow(10, precision);
+                return Math.round(number * factor) / factor;
+            }
+
             sizes = [Math.pow(1024, 6), Math.pow(1024, 5), Math.pow(1024, 4), Math.pow(1024, 3), Math.pow(1024, 2), 1024];
             symbols = ['PB', 'TB', 'GB', 'MB', 'KB', 'B'];
-            for (let j = 0; j <= sizes.length; j++){
-                if(uploadFileSize >= sizes[j]) {
-                    fileSize = Math.round(uploadFileSize/sizes[j]);
-                    fileSymb = symbols[j-1];
+            for (let j = 0; j <= sizes.length; j++) {
+                // debugger;
+                if (uploadFileSize <= sizes[j]) {
+                    fileSymb = symbols[j];
+                    console.log(fileSymb);
+                };
+                if (uploadFileSize >= sizes[j]) {
+                    fileSize = precisionRound(uploadFileSize / sizes[j], 2);
+                    console.log(uploadFileSize / sizes[j]);
+                    console.log(fileSize);
+                    break;
                 };
             };
 
             let fileInfo = [
-                `File Name: ${uploadFileName}`, 
-                `File Size: ${fileSize} ${fileSymb}`, 
-                `File Type: ${uploadFileType}`, 
+                `File Name: ${uploadFileName}`,
+                `File Size: ${fileSize} ${fileSymb}`,
+                `File Type: ${uploadFileType}`,
                 `Last Modified: ${uploadFileModified}`
             ];
 
@@ -57,7 +69,7 @@
                 document.getElementById("fileInfo").appendChild(liEm);
             };
         });
-        
+
     </script>
 </body>
 
