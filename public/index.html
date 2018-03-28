@@ -8,6 +8,15 @@
 </head>
 <body>
     <h1>Upload</h1>
-    
+    <form
+    ref="uploadForm"
+    id="uploadForm"
+    action="http://localhost:3000/upload"
+    method="POST"
+    encType="multipart/form-data"
+    onchange="alertFilesize();">
+        <input type="file" name="sampleFile"/>
+        <input type="submit" value="upload!"/>
+    </form>
 </body>
 </html>

@@ -10,7 +10,7 @@ const app = express();
 app.use(fileUpload());
 
 app.get('/', function (req, res) {
-    res.sendFile(__dirname + 'public/index.html');
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.post('/upload', function (req, res) {
@@ -21,7 +21,7 @@ app.post('/upload', function (req, res) {
     let sampleFile = req.files.sampleFile;
 
     // use the mv() method to place the file somewhere on your server.
-    sampleFile.mv(`./uploads/${sampleFile.name}`, function (req, res) {
+    sampleFile.mv(`./uploads/${sampleFile.name}`, function (err) {
         console.log(sampleFile);
         if (err)
             return res.status(500).send(err);
