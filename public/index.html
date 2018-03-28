@@ -25,14 +25,17 @@
         fileSize = 0;
         fileSymb = '';
         $('#uploadForm').bind('change', function () {
+            // clear file info when new file is selected
+            document.getElementById("fileInfo").innerHTML = "";
+            // gets file information
             let uploadFileName = this[0].files[0].name;
             let uploadFileSize = this[0].files[0].size;
             let uploadFileType = this[0].files[0].type;
             let uploadFileModified = this[0].files[0].lastModifiedDate;
-            console.log(uploadFileName);
-            console.log(uploadFileSize);
-            console.log(uploadFileType);
-            console.log(uploadFileModified);
+            // console.log(uploadFileName);
+            // console.log(uploadFileSize);
+            // console.log(uploadFileType);
+            // console.log(uploadFileModified);
 
             function precisionRound(number, precision) {
                 var factor = Math.pow(10, precision);
@@ -45,12 +48,12 @@
                 // debugger;
                 if (uploadFileSize <= sizes[j]) {
                     fileSymb = symbols[j];
-                    console.log(fileSymb);
+                    // console.log(fileSymb);
                 };
                 if (uploadFileSize >= sizes[j]) {
                     fileSize = precisionRound(uploadFileSize / sizes[j], 2);
-                    console.log(uploadFileSize / sizes[j]);
-                    console.log(fileSize);
+                    // console.log(uploadFileSize / sizes[j]);
+                    // console.log(fileSize);
                     break;
                 };
             };

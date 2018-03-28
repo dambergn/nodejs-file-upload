@@ -14,6 +14,7 @@ run npm install to install dependencies.
 [X]Get file size on client side.
 [X]Format data to be displayed on DOM.
 [X]Format file size to display in B, KB, MB, GB, TB, etc
+[X]Clear file information if new file is selected.
 [ ]Show progress of upload.
 [ ]Break large files into smaller pieces on client and re-assemble on server side.
 [ ]encrypt file uploads.
