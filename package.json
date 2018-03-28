@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/dambergn/nodejs-file-upload/issues"
   },
-  "homepage": "https://github.com/dambergn/nodejs-file-upload#readme"
+  "homepage": "https://github.com/dambergn/nodejs-file-upload#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-fileupload": "^0.4.0"
+  }
 }
