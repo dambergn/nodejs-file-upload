@@ -13,6 +13,12 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
+// creates upload directory if it does not exist.
+let dir = './uploads';
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
 app.post('/upload', function (req, res) {
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
