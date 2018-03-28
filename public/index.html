@@ -15,7 +15,7 @@
     <form ref="uploadForm" id="uploadForm" action="http://localhost:3000/upload" method="POST" encType="multipart/form-data">
         <input type="file" name="sampleFile" />
         <br>
-        <input type="submit" value="Upload!" action="uploadComplete();"/>
+        <input id="upload" type="submit" value="Upload!" onclick="uploadMonitor();" />
         <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
         <h3 id="status"></h3>
         <p id="loaded_n_total"></p>
@@ -42,11 +42,13 @@
             // console.log(uploadFileType);
             // console.log(uploadFileModified);
 
+            // Adds decimal precision to Math.Round
             function precisionRound(number, precision) {
                 var factor = Math.pow(10, precision);
                 return Math.round(number * factor) / factor;
-            }
+            };
 
+            // Calculates a more readable output for file size.
             sizes = [Math.pow(1024, 6), Math.pow(1024, 5), Math.pow(1024, 4), Math.pow(1024, 3), Math.pow(1024, 2), 1024];
             symbols = ['PB', 'TB', 'GB', 'MB', 'KB', 'B'];
             for (let j = 0; j <= sizes.length; j++) {
@@ -77,15 +79,21 @@
                 document.getElementById("fileInfo").appendChild(liEm);
             };
 
-            // document.getElementById("progressBar").value = "75";
+            
         });
+        function uploadMonitor() {
+            document.getElementById("progressBar").value = "75";
+            uploadComplete();
+        };
+
         function uploadComplete() {
-                document.getElementById("fileInfo").innerHTML = "";
-                let liEm = document.createElement("li");
-                let info = document.createTextNode("Upload Complete!");
-                liEm.appendChild(info);
-                document.getElementById("fileInfo").appendChild(liEm);
-            };
+            document.getElementById("progressBar").value = "100";
+            document.getElementById("fileInfo").innerHTML = "";
+            let liEm = document.createElement("li");
+            let info = document.createTextNode("Upload Complete!");
+            liEm.appendChild(info);
+            document.getElementById("fileInfo").appendChild(liEm);
+        };
     </script>
 </body>
 
